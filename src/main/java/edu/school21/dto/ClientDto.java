@@ -41,7 +41,7 @@ public class ClientDto {
     private LocalDate birthday;
 
     @NotNull(message = "gender: cannot be empty")
-    @Schema(description = "Client gender", example = "male or female")
+    @Schema(description = "Client gender", example = "male")
     private Gender gender;
 
     @JsonProperty(value = "registration_date", access = JsonProperty.Access.READ_ONLY)
