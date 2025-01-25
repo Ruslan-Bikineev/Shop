@@ -53,11 +53,11 @@ VALUES ('USA', 'New York', '5th Avenue, 101'),
 
 -- Вставка тестовых данных в таблицу clients
 INSERT INTO clients (name, surname, birthday, gender, address_id)
-VALUES ('John', 'Doe', '1990-05-15', 'Male', (SELECT id FROM addresses WHERE street = '5th Avenue, 101')),
-       ('Jane', 'Smith', '1985-11-20', 'Female', (SELECT id FROM addresses WHERE street = 'Queen Street, 55')),
-       ('Sherlock', 'Holmes', '1980-01-06', 'Male', (SELECT id FROM addresses WHERE street = 'Baker Street, 221B')),
-       ('Hans', 'Muller', '1992-09-10', 'Male', (SELECT id FROM addresses WHERE street = 'Unter den Linden, 1')),
-       ('Marie', 'Curie', '1975-07-22', 'Female', (SELECT id FROM addresses WHERE street = 'Champs-Élysées, 120'));
+VALUES ('John', 'Doe', '1990-05-15', 'male', (SELECT id FROM addresses WHERE street = '5th Avenue, 101')),
+       ('Jane', 'Smith', '1985-11-20', 'female', (SELECT id FROM addresses WHERE street = 'Queen Street, 55')),
+       ('Sherlock', 'Holmes', '1980-01-06', 'male', (SELECT id FROM addresses WHERE street = 'Baker Street, 221B')),
+       ('Hans', 'Muller', '1992-09-10', 'male', (SELECT id FROM addresses WHERE street = 'Unter den Linden, 1')),
+       ('Marie', 'Curie', '1975-07-22', 'female', (SELECT id FROM addresses WHERE street = 'Champs-Élysées, 120'));
 
 -- Вставка тестовых данных в таблицу suppliers
 INSERT INTO suppliers (address_id, name, phone_number)

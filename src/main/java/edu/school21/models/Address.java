@@ -20,7 +20,10 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
+
     private String country;
+
     private String city;
+
     private String street;
 }

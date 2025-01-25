@@ -11,9 +11,9 @@ CREATE TABLE IF NOT EXISTS clients
     id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     address_id        uuid REFERENCES addresses (id),
     name              VARCHAR(255) NOT NULL,
+    gender            VARCHAR(255) NOT NULL,
     surname           VARCHAR(255) NOT NULL,
     birthday          DATE         NOT NULL,
-    gender            VARCHAR(255) NOT NULL,
     registration_date TIMESTAMP        DEFAULT now()::TIMESTAMP(2)
 );
 

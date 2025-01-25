@@ -13,6 +13,7 @@ import java.util.UUID;
 public class MessageDto {
     @Schema(description = "Id", example = "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d")
     private UUID id;
+
     @Schema(description = "Message", example = "Image upload successful")
     private String message;
 }

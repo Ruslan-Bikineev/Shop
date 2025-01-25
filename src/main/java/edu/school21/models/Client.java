@@ -1,5 +1,6 @@
 package edu.school21.models;
 
+import edu.school21.constants.Gender;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,13 +24,19 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
+
     private String name;
+
     private String surname;
+
     private LocalDate birthday;
-    private String gender;
+
+    private Gender gender;
+
     @CreationTimestamp
     @Column(name = "registration_date")
     private Timestamp registrationDate;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
