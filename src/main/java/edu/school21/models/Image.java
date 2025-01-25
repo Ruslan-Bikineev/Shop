@@ -22,7 +22,9 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
+
     private byte[] image;
+
     @OneToOne(mappedBy = "image", fetch = FetchType.LAZY)
     private Product product;
 

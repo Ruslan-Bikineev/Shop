@@ -1,4 +1,4 @@
-package edu.school21.controllers.advice;
+package edu.school21.exceptions.advice;
 
 import edu.school21.dto.ErrorInfoDto;
 import edu.school21.exceptions.EmptyFileException;

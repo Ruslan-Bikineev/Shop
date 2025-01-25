@@ -19,13 +19,16 @@ import java.util.UUID;
 public class SupplierDto {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private UUID id;
+
     @NotBlank(message = "name: cannot be empty")
     @Size(min = 1, max = 255, message = "Name must be between 1 and 255 characters")
     @Schema(description = "Supplier name", example = "Igor")
     private String name;
+
     @Valid
     @NotNull(message = "Address cannot be empty, required fields: country, city, street")
     private AddressDto address;
+
     @Pattern(
             regexp = "^(8|\\+7)\\(\\d{3}\\)\\d{3}-\\d{2}-\\d{2}$",
             message = "Phone number must be in the format: +7(XXX)XXX-XX-XX or 8(XXX)XXX-XX-XX"

@@ -1,6 +1,7 @@
 package edu.school21.utils;
 
 import com.github.javafaker.Faker;
+import edu.school21.constants.Gender;
 import edu.school21.models.Address;
 import edu.school21.models.Client;
 import edu.school21.models.Image;
@@ -24,7 +25,7 @@ public class RandomModels {
         client.setBirthday(faker.date().birthday()
                 .toInstant().atZone(ZoneId.systemDefault())
                 .toLocalDate());
-        client.setGender(faker.options().option("male", "female"));
+        client.setGender(faker.options().option(Gender.MALE, Gender.FEMALE));
         client.setAddress(getRandomAddress());
         return client;
     }

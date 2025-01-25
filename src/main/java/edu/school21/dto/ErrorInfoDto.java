@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 public class ErrorInfoDto {
     @Schema(description = "Request path", example = "{url}/api/v1/{api}")
     private String path;
+
     @Schema(description = "Error message", example = "error message")
     private String message;
 }

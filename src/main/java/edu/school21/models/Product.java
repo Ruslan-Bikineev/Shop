@@ -23,17 +23,24 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
+
     private String name;
+
     private String category;
+
     private Double price;
+
     @Column(name = "available_stock")
     private Integer availableStock;
+
     @UpdateTimestamp
     @Column(name = "last_update_date")
     private Timestamp lastUpdateDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "image_id")
     private Image image;
