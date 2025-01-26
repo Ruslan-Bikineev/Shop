@@ -3,6 +3,7 @@ package edu.school21.controllers;
 import edu.school21.ShopApplicationTests;
 import edu.school21.dto.ProductDto;
 import edu.school21.models.Product;
+import edu.school21.repositories.CategoryRepository;
 import edu.school21.repositories.ProductRepository;
 import edu.school21.repositories.SupplierRepository;
 import edu.school21.services.ImageService;
@@ -40,6 +41,8 @@ public class ProductControllerTests extends ShopApplicationTests {
     private ImageService imageService;
     @Autowired
     private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
     @Autowired
     private SupplierRepository supplierRepository;
 
@@ -167,6 +170,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         Product randomProductForDb = randomModels.getRandomProduct();
         supplierRepository.save(randomProductForDb.getSupplier());
         imageService.saveImage(randomProductForDb.getImage());
+        categoryRepository.save(randomProductForDb.getCategory());
         productRepository.save(randomProductForDb);
         RestAssured.given()
                 .port(port)
@@ -176,7 +180,7 @@ public class ProductControllerTests extends ShopApplicationTests {
                 .statusCode(HTTP_OK)
                 .body("id", equalTo(randomProductForDb.getId().toString()),
                         "name", equalTo(randomProductForDb.getName()),
-                        "category", equalTo(randomProductForDb.getCategory()),
+                        "category", equalTo(randomProductForDb.getCategory().getName()),
                         "price.toString()", equalTo(randomProductForDb.getPrice().toString()),
                         "available_stock", equalTo(randomProductForDb.getAvailableStock()),
                         "last_update_date", equalTo(Utils.formatTimestamp(randomProductForDb.getLastUpdateDate())),
@@ -184,6 +188,7 @@ public class ProductControllerTests extends ShopApplicationTests {
                         "image_id", equalTo(randomProductForDb.getImage().getId().toString()));
         supplierRepository.deleteById(randomProductForDb.getSupplier().getId());
         imageService.deleteById(randomProductForDb.getImage().getId());
+        categoryRepository.deleteById(randomProductForDb.getCategory().getId());
     }
 
     @Test
@@ -236,6 +241,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         Product existsProductInDb = randomModels.getRandomProduct();
         supplierRepository.save(existsProductInDb.getSupplier());
         imageService.saveImage(existsProductInDb.getImage());
+        categoryRepository.save(existsProductInDb.getCategory());
         productRepository.save(existsProductInDb);
         RestAssured.given()
                 .port(port)
@@ -256,6 +262,8 @@ public class ProductControllerTests extends ShopApplicationTests {
         supplierRepository.deleteById(randomProductDto.getSupplierId());
         imageService.deleteById(existsProductInDb.getImage().getId());
         imageService.deleteById(randomProductDto.getImageId());
+        categoryRepository.deleteById(existsProductInDb.getCategory().getId());
+        categoryRepository.deleteByName(randomProductDto.getCategory());
     }
 
     @Test
@@ -292,6 +300,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         Product existsProductInDb = randomModels.getRandomProduct();
         supplierRepository.save(existsProductInDb.getSupplier());
         imageService.saveImage(existsProductInDb.getImage());
+        categoryRepository.save(existsProductInDb.getCategory());
         productRepository.save(existsProductInDb);
         RestAssured.given()
                 .port(port)
@@ -313,6 +322,8 @@ public class ProductControllerTests extends ShopApplicationTests {
                         "image_id", equalTo(existsProductInDb.getImage().getId().toString()));
         supplierRepository.deleteById(existsProductInDb.getSupplier().getId());
         imageService.deleteById(existsProductInDb.getImage().getId());
+        categoryRepository.deleteById(existsProductInDb.getCategory().getId());
+        categoryRepository.deleteByName(randomProductDto.getCategory());
     }
 
     @Test
@@ -325,6 +336,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         Product existsProductInDb = randomModels.getRandomProduct();
         supplierRepository.save(existsProductInDb.getSupplier());
         imageService.saveImage(existsProductInDb.getImage());
+        categoryRepository.save(existsProductInDb.getCategory());
         productRepository.save(existsProductInDb);
         RestAssured.given()
                 .port(port)
@@ -336,7 +348,7 @@ public class ProductControllerTests extends ShopApplicationTests {
                 .statusCode(HTTP_OK)
                 .body("id", equalTo(existsProductInDb.getId().toString()),
                         "name", equalTo(existsProductInDb.getName()),
-                        "category", equalTo(existsProductInDb.getCategory()),
+                        "category", equalTo(existsProductInDb.getCategory().getName()),
                         "price.toString()", equalTo(existsProductInDb.getPrice().toString()),
                         "available_stock", equalTo(existsProductInDb.getAvailableStock()),
                         "last_update_date", is(notNullValue()),
@@ -346,6 +358,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         supplierRepository.deleteById(randomProductDto.getSupplierId());
         imageService.deleteById(existsProductInDb.getImage().getId());
         imageService.deleteById(randomProductDto.getImageId());
+        categoryRepository.deleteById(existsProductInDb.getCategory().getId());
     }
 
     @Test
@@ -354,6 +367,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         Product existsProductInDb = randomModels.getRandomProduct();
         supplierRepository.save(existsProductInDb.getSupplier());
         imageService.saveImage(existsProductInDb.getImage());
+        categoryRepository.save(existsProductInDb.getCategory());
         productRepository.save(existsProductInDb);
         RestAssured.given()
                 .port(port)
@@ -364,7 +378,7 @@ public class ProductControllerTests extends ShopApplicationTests {
                 .statusCode(HTTP_OK)
                 .body("id", equalTo(existsProductInDb.getId().toString()),
                         "name", equalTo(existsProductInDb.getName()),
-                        "category", equalTo(existsProductInDb.getCategory()),
+                        "category", equalTo(existsProductInDb.getCategory().getName()),
                         "price.toString()", equalTo(existsProductInDb.getPrice().toString()),
                         "available_stock", equalTo(0),
                         "last_update_date", is(notNullValue()),
@@ -372,6 +386,7 @@ public class ProductControllerTests extends ShopApplicationTests {
                         "image_id", equalTo(existsProductInDb.getImage().getId().toString()));
         supplierRepository.deleteById(existsProductInDb.getSupplier().getId());
         imageService.deleteById(existsProductInDb.getImage().getId());
+        categoryRepository.deleteById(existsProductInDb.getCategory().getId());
     }
 
     @Test
@@ -381,6 +396,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         byte[] expectedImageBytes = existsProductInDb.getImage().getImage();
         supplierRepository.save(existsProductInDb.getSupplier());
         imageService.saveImage(existsProductInDb.getImage());
+        categoryRepository.save(existsProductInDb.getCategory());
         productRepository.save(existsProductInDb);
         byte[] productImage = RestAssured.given()
                 .port(port)
@@ -393,6 +409,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         Assertions.assertArrayEquals(expectedImageBytes, productImage);
         supplierRepository.deleteById(existsProductInDb.getSupplier().getId());
         imageService.deleteById(existsProductInDb.getImage().getId());
+        categoryRepository.deleteById(existsProductInDb.getCategory().getId());
     }
 
     @Test
@@ -401,6 +418,7 @@ public class ProductControllerTests extends ShopApplicationTests {
         Product existsProductInDb = randomModels.getRandomProduct();
         supplierRepository.save(existsProductInDb.getSupplier());
         imageService.saveImage(existsProductInDb.getImage());
+        categoryRepository.save(existsProductInDb.getCategory());
         productRepository.save(existsProductInDb);
         RestAssured.given()
                 .port(port)
@@ -410,6 +428,7 @@ public class ProductControllerTests extends ShopApplicationTests {
                 .statusCode(HTTP_NO_CONTENT);
         supplierRepository.deleteById(existsProductInDb.getSupplier().getId());
         imageService.deleteById(existsProductInDb.getImage().getId());
+        categoryRepository.deleteById(existsProductInDb.getCategory().getId());
     }
 
     @Test
