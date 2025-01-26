@@ -31,13 +31,19 @@ CREATE TABLE IF NOT EXISTS suppliers
     phone_number VARCHAR(20)  NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS categories
+(
+    id   uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+    name VARCHAR(255) NOT NULL UNIQUE
+);
+
 CREATE TABLE IF NOT EXISTS products
 (
     id               uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-    supplier_id      uuid         NOT NULL REFERENCES suppliers (id),
     image_id         uuid         NOT NULL REFERENCES images (id),
+    supplier_id      uuid         NOT NULL REFERENCES suppliers (id),
+    category_id      uuid         NOT NULL REFERENCES categories (id),
     name             VARCHAR(255) NOT NULL,
-    category         VARCHAR(255) NOT NULL,
     price            DECIMAL      NOT NULL CHECK (price > 0),
     available_stock  INTEGER      NOT NULL CHECK ( available_stock >= 0 ),
     last_update_date TIMESTAMP        DEFAULT now()::TIMESTAMP(2)
@@ -75,15 +81,23 @@ VALUES (decode('aW1hZ2Ux', 'base64')),
        (decode('aW1hZ2U0', 'base64')),
        (decode('aW1hZ2U1', 'base64'));
 
+-- Вставка тестовых данных в таблицу categories
+INSERT INTO categories (name)
+VALUES ('Electronics'),
+       ('Clothing'),
+       ('Toys'),
+       ('Books'),
+       ('Sports');
+
 -- Вставка тестовых данных в таблицу products
-INSERT INTO products (supplier_id, image_id, name, category, price, available_stock)
+INSERT INTO products (supplier_id, image_id, name, category_id, price, available_stock)
 VALUES ((SELECT id FROM suppliers WHERE name = 'Supplier A'), (SELECT id FROM images WHERE image = 'image1'),
-        'Product A', 'Electronics', 99.99, 10),
+        'Product A', (SELECT id FROM categories WHERE name = 'Electronics'), 99.99, 10),
        ((SELECT id FROM suppliers WHERE name = 'Supplier B'), (SELECT id FROM images WHERE image = 'image2'),
-        'Product B', 'Clothing', 49.99, 5),
+        'Product B', (SELECT id FROM categories WHERE name = 'Clothing'), 49.99, 5),
        ((SELECT id FROM suppliers WHERE name = 'Supplier C'), (SELECT id FROM images WHERE image = 'image3'),
-        'Product C', 'Toys', 19.99, 15),
+        'Product C', (SELECT id FROM categories WHERE name = 'Toys'), 19.99, 15),
        ((SELECT id FROM suppliers WHERE name = 'Supplier D'), (SELECT id FROM images WHERE image = 'image4'),
-        'Product D', 'Books', 24.99, 8),
+        'Product D', (SELECT id FROM categories WHERE name = 'Books'), 24.99, 8),
        ((SELECT id FROM suppliers WHERE name = 'Supplier E'), (SELECT id FROM images WHERE image = 'image5'),
-        'Product E', 'Sports', 79.99, 3);
+        'Product E', (SELECT id FROM categories WHERE name = 'Sports'), 79.99, 3);

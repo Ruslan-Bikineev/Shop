@@ -26,7 +26,9 @@ public class Product {
 
     private String name;
 
-    private String category;
+    @OneToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     private Double price;
 

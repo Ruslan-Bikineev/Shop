@@ -3,6 +3,7 @@ package edu.school21.utils;
 import com.github.javafaker.Faker;
 import edu.school21.constants.Gender;
 import edu.school21.models.Address;
+import edu.school21.models.Category;
 import edu.school21.models.Client;
 import edu.school21.models.Image;
 import edu.school21.models.Product;
@@ -55,10 +56,16 @@ public class RandomModels {
         return image;
     }
 
+    public Category getRandomCategory() {
+        Category category = new Category();
+        category.setName(faker.commerce().department());
+        return category;
+    }
+
     public Product getRandomProduct() {
         Product product = new Product();
         product.setName(faker.commerce().productName());
-        product.setCategory(faker.commerce().department());
+        product.setCategory(getRandomCategory());
         product.setPrice(Double.valueOf(faker.commerce().price().replace(',', '.')));
         product.setAvailableStock(Integer.valueOf(faker.number().numberBetween(10, 100)));
         product.setSupplier(getRandomSupplier());

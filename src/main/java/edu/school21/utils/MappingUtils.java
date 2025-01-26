@@ -3,6 +3,7 @@ package edu.school21.utils;
 import edu.school21.dto.ClientDto;
 import edu.school21.dto.ProductDto;
 import edu.school21.dto.SupplierDto;
+import edu.school21.models.Category;
 import edu.school21.models.Client;
 import edu.school21.models.Product;
 import edu.school21.models.Supplier;
@@ -35,11 +36,15 @@ public class MappingUtils {
 
     public Product convertToEntity(ProductDto productDto) {
         Product product = modelMapper.map(productDto, Product.class);
+        if (productDto.getCategory() != null) {
+            product.setCategory(new Category(productDto.getCategory()));
+        }
         return product;
     }
 
     public ProductDto convertToDto(Product product) {
         ProductDto productDto = modelMapper.map(product, ProductDto.class);
+        productDto.setCategory(product.getCategory().getName());
         return productDto;
     }
 }
