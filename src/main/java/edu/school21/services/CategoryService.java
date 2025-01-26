@@ -2,9 +2,9 @@ package edu.school21.services;
 
 import edu.school21.models.Category;
 import edu.school21.repositories.CategoryRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class CategoryService {
     CategoryRepository categoryRepository;
 
