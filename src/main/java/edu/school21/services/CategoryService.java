@@ -18,7 +18,7 @@ public class CategoryService {
                 .orElseGet(() -> categoryRepository.save(new Category(name)));
     }
 
-    @Scheduled(cron = "0 */10 * * * *", zone = "Europe/Moscow")
+    @Scheduled(cron = "${scheduler.categories.cleanup.cron}", zone = "Europe/Moscow")
     public void cleanUnusedCategories() {
         categoryRepository.deleteUnusedCategories();
     }
