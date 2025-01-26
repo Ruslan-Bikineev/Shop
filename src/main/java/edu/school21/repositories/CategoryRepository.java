@@ -19,4 +19,12 @@ public interface CategoryRepository extends ListCrudRepository<Category, UUID> {
     @Transactional
     @Query("DELETE FROM Category c WHERE LOWER(c.name) = LOWER(:name)")
     int deleteByName(String name);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM categories WHERE id IN (" +
+            "SELECT id FROM categories " +
+            "EXCEPT " +
+            "SELECT category_id FROM products)", nativeQuery = true)
+    int deleteUnusedCategories();
 }
