@@ -27,7 +27,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/clients",
+							"raw": "https://shop.ru/clients",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -63,7 +63,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/clients/search",
+							"raw": "https://shop.ru/clients/search",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -141,7 +141,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/clients/",
+							"raw": "https://shop.ru/clients/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -175,7 +175,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/clients/",
+							"raw": "https://shop.ru/clients/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -200,7 +200,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/clients/",
+							"raw": "https://shop.ru/clients/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -230,7 +230,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/suppliers",
+							"raw": "https://shop.ru/suppliers",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -254,7 +254,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/suppliers/",
+							"raw": "https://shop.ru/suppliers/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -279,7 +279,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/suppliers/",
+							"raw": "https://shop.ru/suppliers/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -313,7 +313,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/suppliers",
+							"raw": "https://shop.ru/suppliers",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -346,7 +346,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/suppliers/",
+							"raw": "https://shop.ru/suppliers/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -380,7 +380,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/suppliers/753bf9bb-4cb1-4bd8-8088-3bfb466d2493",
+							"raw": "https://shop.ru/suppliers/753bf9bb-4cb1-4bd8-8088-3bfb466d2493",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -421,7 +421,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/images",
+							"raw": "https://shop.ru/images",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -462,7 +462,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/images/",
+							"raw": "https://shop.ru/images/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -504,7 +504,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/images/",
+							"raw": "https://shop.ru/images/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -546,7 +546,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/images/",
+							"raw": "https://shop.ru/images/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -608,7 +608,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/products",
+							"raw": "https://shop.ru/products",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -641,7 +641,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/products/",
+							"raw": "https://shop.ru/products/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -675,7 +675,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/products/",
+							"raw": "https://shop.ru/products/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -709,7 +709,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/products/amount/?amount=0",
+							"raw": "https://shop.ru/products/amount/?amount=0",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -741,7 +741,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/products",
+							"raw": "https://shop.ru/products",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -765,7 +765,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/products/image/",
+							"raw": "https://shop.ru/products/image/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -791,7 +791,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/api/v1/products/",
+							"raw": "https://shop.ru/products/",
 							"protocol": "http",
 							"host": [
 								"127",
