@@ -48,5 +48,3 @@ CREATE TABLE IF NOT EXISTS products
     available_stock  INTEGER      NOT NULL CHECK ( available_stock >= 0 ),
     last_update_date TIMESTAMP        DEFAULT now()::TIMESTAMP(2)
 );
-
-
